@@ -1,0 +1,8 @@
+bin/
+.classpath
+.gradle/
+.project
+.settings/
+MinecraftByExample_Client.launch
+MinecraftByExample_Server.launch
+build/
