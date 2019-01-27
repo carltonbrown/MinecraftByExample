@@ -8,7 +8,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
+import java.util.Iterator;
 
 // This creative tab is very similar to the basic CreativeTab, but overrides displayAllReleventItems to
 //  customise the list of displayed items - filters through all the items looking for ones whose name starts
@@ -29,7 +29,10 @@ public class AllMbeItemsTab extends CreativeTabs {
   @Override
   public void displayAllRelevantItems(NonNullList<ItemStack> itemsToShowOnTab)
   {
-    for (Item item : Item.REGISTRY) {
+    Iterator<Item> it = Item.REGISTRY.iterator();
+    //for (Item item : Item.REGISTRY) {
+    while (it.hasNext()) {
+      Item item = it.next();
       if (item != null) {
         if (item.getUnlocalizedName().contains(".mbe")) {
           item.getSubItems(CreativeTabs.SEARCH, itemsToShowOnTab);  // CreativeTabs.SEARCH will find all items even if they belong to another tab
